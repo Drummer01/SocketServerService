@@ -39,10 +39,10 @@ namespace SocketServerService
             Implementator impl = Implementator.GetInstance();
             controller.SetImplementator(impl);
 
-            impl.onStart += Server.onStart;
-            impl.onStop += Server.onStop;
-            impl.onInfo += Server.onInfo;
-            impl.onChannelsReload += Server.onChannelsReload;
+            impl.onStart += ServerHandler.onStart;
+            impl.onStop += ServerHandler.onStop;
+            impl.onInfo += ServerHandler.onInfo;
+            impl.onChannelsReload += ServerHandler.onChannelsReload;
 
             localRemoteControlServer.Start(s =>
             {
