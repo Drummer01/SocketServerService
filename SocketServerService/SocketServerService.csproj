@@ -41,6 +41,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fleck">
+      <HintPath>..\RemoteControl\bin\Debug\Fleck.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
@@ -61,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Server.cs" />
     <Compile Include="Service.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -78,6 +82,14 @@
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{263d3ced-10ec-4180-bef4-fa1d979ed34d}</Project>
       <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RemoteControl\RemoteControl.csproj">
+      <Project>{3555ef91-7e7e-4598-aae5-7c2cd5f5f758}</Project>
+      <Name>RemoteControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server\Server.csproj">
+      <Project>{9c5d6e6c-c445-4d8f-b31d-79f6bbb5d56c}</Project>
+      <Name>Server</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
