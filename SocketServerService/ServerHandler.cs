@@ -61,7 +61,15 @@ namespace SocketServerService
 
         internal static void onChannelsReload(IObervable sender)
         {
+            if (chat == null)
+            {
+                sender.Notify("Server not started");
+                return;
+            }
 
+            chat.ReloadChannels();
+
+            sender.Notify(string.Format("Channels loaded. Total loaded channels: {0}", chat.chanelRepo.all().Count));
         }
 
         internal static void onInfo(IObervable sender)
