@@ -5,6 +5,7 @@ namespace DataAccess
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     [Table("nltu-chat.users")]
     public partial class users
@@ -28,5 +29,13 @@ namespace DataAccess
         public string avatar { get; set; }
 
         public int lastonline { get; set; }
+
+        public static int? checkAccessToken(string token)
+        {
+            using (DataModel ctx = new DataModel())
+            {
+                return ctx.users.Where(u => u.hash == token).Select(u => new { u.id }).FirstOrDefault()?.id;
+            }
+        }
     }
 }

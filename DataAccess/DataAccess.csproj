@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChannelPermissionsLevel.cs" />
     <Compile Include="channels.cs" />
     <Compile Include="channel_bans.cs" />
     <Compile Include="channel_permissions.cs" />
