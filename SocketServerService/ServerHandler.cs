@@ -48,7 +48,15 @@ namespace SocketServerService
 
         internal static void onStop(IObervable sender)
         {
-
+            if (chat == null)
+            {
+                sender.Notify("Server already stopped");
+                return;
+            }
+            chat = null;
+            listener = null;
+            server.Dispose();
+            sender.Notify("Server stopped");
         }
 
         internal static void onChannelsReload(IObervable sender)
