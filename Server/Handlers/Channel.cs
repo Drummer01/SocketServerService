@@ -27,7 +27,7 @@ namespace Server.Sock.Handlers
         {
             Response res = new Response()
             {
-                action = action,
+                action = action + Response.ACTION_DONE,
                 data = data
             };
             ISendable users = Register.getInstance().get("users") as ISendable;
@@ -100,7 +100,7 @@ namespace Server.Sock.Handlers
 
             Response response = new Response()
             {
-                action = Response.ACTION_CHANNEL_DISCONNECT,
+                action = Response.ACTION_CHANNEL_DISCONNECT + Response.ACTION_DONE,
                 data = new
                 {
                     reason = reason
@@ -161,7 +161,7 @@ namespace Server.Sock.Handlers
             };
             repo.add(chan);
 
-            notifyClients(Response.ACTION_CHANNEL_UPDATE, repo.all());
+            notifyClients(Response.ACTION_CHANNEL_UPDATE + Response.ACTION_DONE, repo.all());
             return true;
         }
 
@@ -177,7 +177,7 @@ namespace Server.Sock.Handlers
             {
                 Response response = new Response()
                 {
-                    action = Response.ACTION_CHANNEL_DISCONNECT,
+                    action = Response.ACTION_CHANNEL_DISCONNECT + Response.ACTION_DONE,
                     data = new
                     {
                         reason = "removing channel"
@@ -187,7 +187,7 @@ namespace Server.Sock.Handlers
                 chan.kickAll(response);
                 repo.remove(chan);
 
-                notifyClients(Response.ACTION_CHANNEL_UPDATE, repo.all());
+                notifyClients(Response.ACTION_CHANNEL_UPDATE + Response.ACTION_DONE, repo.all());
             }
             return success;
         }
@@ -211,7 +211,7 @@ namespace Server.Sock.Handlers
                 };
                 repo.add(chan);
 
-                notifyClients(Response.ACTION_CHANNEL_UPDATE, repo.all());
+                notifyClients(Response.ACTION_CHANNEL_UPDATE + Response.ACTION_DONE, repo.all());
             }
             return success;
         }

@@ -13,6 +13,7 @@ namespace Server.Sock.Ws
         #region Public constants
         public const string ACTION_CHANNEL_UPDATE = "channel.update";
         public const string ACTION_CHANNEL_DISCONNECT = "channel.disconnect";
+        public const string ACTION_DONE = "+done";
         #endregion
 
         public object exception { set; get; }

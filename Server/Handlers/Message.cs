@@ -36,7 +36,7 @@ namespace Server.Sock.Handlers
             msgData.atachments = atachments;
 
             res.data = msgData;
-            res.action = args.Request.Action;
+            res.action = args.Request.Action + Response.ACTION_DONE;
             res.RequiredModules = new Type[] { typeof(Filter) };
 
             channel.send(res);

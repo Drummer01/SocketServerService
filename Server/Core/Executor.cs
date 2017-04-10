@@ -29,7 +29,7 @@ namespace Server.Sock.Core
         public void run()
         {
             Response response = new Response();
-            response.action = request.Action;
+            response.action = request.Action + Response.ACTION_DONE;
             ServerDiagnostics diag = ServerDiagnostics.GetInstance();
             try
             {
