@@ -43,6 +43,7 @@ namespace SocketServerService
             impl.onStop += ServerHandler.onStop;
             impl.onInfo += ServerHandler.onInfo;
             impl.onChannelsReload += ServerHandler.onChannelsReload;
+            impl.onSaveExceptions += ServerHandler.onSaveExceptions;
 
             localRemoteControlServer.Start(s =>
             {

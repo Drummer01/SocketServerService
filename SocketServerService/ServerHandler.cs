@@ -78,6 +78,12 @@ namespace SocketServerService
             sender.Notify(string.Format("Running IP:{0}\nTotal:\nClients count: {1}\nChannels count: {2}", runningIp, diag.TotalClientsCount, Chat.getInstance().chanelRepo.all().Count));
         }
 
+        internal static void onSaveExceptions(IObervable sender)
+        {
+            string path = ExceptionsLogs.SaveToFile();
+            sender.Notify(string.Format("Exceptions saved succesfully. Log path: {0}", path));
+        }
+
         private static object GetIP()
         {
             string strIp = string.Empty;
