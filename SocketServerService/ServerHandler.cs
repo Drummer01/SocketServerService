@@ -21,7 +21,7 @@ namespace SocketServerService
         {
             if (chat != null)
             {
-                sender.Notify("Server already started");
+                sender?.Notify("Server already started");
                 return;
             }
             chat = Chat.getInstance();
@@ -43,7 +43,7 @@ namespace SocketServerService
                 socket.OnError = e => Debug.WriteLine(e);
             });
 
-            sender.Notify("Server started");
+            sender?.Notify("Server started");
         }
 
         internal static void onStop(IObervable sender)

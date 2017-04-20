@@ -50,6 +50,8 @@ namespace SocketServerService
                 s.OnClose = () => { Notifier.RemoveListener(s); };
                 s.OnMessage = message => { controller.onMessage(s, message); };
             });
+
+            ServerHandler.onStart(null);
         }
 
         protected override void OnStop()
