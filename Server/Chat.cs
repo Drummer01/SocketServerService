@@ -78,7 +78,7 @@ namespace Server.Sock
 
         public void OnOpen(IWebSocketConnection conn)
         {
-            conn.Send("hi");
+            //conn.Send("hi");
             ServerDiagnostics.GetInstance().IncrementTotalClientsCount();
             usersRepo.add(new User(conn));
         }
