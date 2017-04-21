@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace SocketServer.Helpers
 {
     public static class ExceptionsLogs
     {
-        private const string LOGS_PATH = @"C:\";
+        private const string LOGS_PATH = @"D:\";
 
         private static List<TimestampException> exceptions = new List<TimestampException>();
 
@@ -22,7 +23,8 @@ namespace SocketServer.Helpers
 
         public static string SaveToFile()
         {
-            string fileName = LOGS_PATH + "SocketServerService_logs_" + DateTime.Now + ".log";
+            string fileName = LOGS_PATH + "SocketServerService_logs_" + DateTime.Now.ToString().Replace(" ", "_").Replace(":", "_") + ".log";
+            Debug.WriteLine(fileName);
             System.IO.File.WriteAllLines(fileName, exceptions.Select( e => formatException(e) ).ToArray());
             return fileName;
         }

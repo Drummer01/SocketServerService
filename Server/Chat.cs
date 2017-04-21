@@ -49,11 +49,9 @@ namespace Server.Sock
             Register.getInstance()
                 .set(this.usersRepo)
                 .set(this.chanelRepo);
-
-            ReloadChannels();
         }
 
-        public void ReloadChannels()
+        public void LoadChannels()
         {
             try
             {
@@ -73,6 +71,7 @@ namespace Server.Sock
             catch (Exception e)
             {
                 Debug.WriteLine(e);
+                ExceptionsLogs.Add(e);
             }
         }
 

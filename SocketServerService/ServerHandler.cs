@@ -25,6 +25,7 @@ namespace SocketServerService
                 return;
             }
             chat = Chat.getInstance();
+            chat.LoadChannels();
 
             listener = Listener.getInstance();
 
@@ -54,6 +55,7 @@ namespace SocketServerService
                 return;
             }
             chat = null;
+            listener.Clear();
             listener = null;
             server.Dispose();
             sender.Notify("Server stopped");
@@ -67,7 +69,7 @@ namespace SocketServerService
                 return;
             }
 
-            chat.ReloadChannels();
+            chat.LoadChannels();
 
             sender.Notify(string.Format("Channels loaded. Total loaded channels: {0}", chat.chanelRepo.all().Count));
         }
@@ -75,7 +77,7 @@ namespace SocketServerService
         internal static void onInfo(IObervable sender)
         {
             ServerDiagnostics diag = ServerDiagnostics.GetInstance();
-            sender.Notify(string.Format("Running IP:{0}\nTotal:\nClients count: {1}\nChannels count: {2}", runningIp, diag.TotalClientsCount, Chat.getInstance().chanelRepo.all().Count));
+            sender.Notify(string.Format("Running IP:{0}\nTotal:\nClients joins count: {1}\nChannels count: {2}", runningIp, diag.TotalClientsCount, Chat.getInstance().chanelRepo.all().Count));
         }
 
         internal static void onSaveExceptions(IObervable sender)
