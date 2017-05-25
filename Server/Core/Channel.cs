@@ -20,7 +20,7 @@ namespace Server.Sock.Core
         public int Id, MaxUsers;
 
         [DataMember]
-        public string Name, Title;
+        public string Name;
 
         [DataMember]
         public int UsersCount

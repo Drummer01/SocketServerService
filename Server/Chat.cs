@@ -62,8 +62,7 @@ namespace Server.Sock
                         Id = row.id,
                         HasPassword = row.is_locked,
                         MaxUsers = row.max_users,
-                        Name = row.name,
-                        Title = row.title
+                        Name = row.name
                     };
                     this.chanelRepo.add(channel);
                 }

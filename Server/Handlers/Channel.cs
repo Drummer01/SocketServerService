@@ -156,8 +156,7 @@ namespace Server.Sock.Handlers
                 Id = created_chann_id,
                 HasPassword = (password != null),
                 MaxUsers = 100,
-                Name = name,
-                Title = title
+                Name = name
             };
             repo.add(chan);
 
@@ -206,8 +205,7 @@ namespace Server.Sock.Handlers
                     Id = row.id,
                     HasPassword = row.is_locked,
                     MaxUsers = row.max_users,
-                    Name = row.name,
-                    Title = row.title
+                    Name = row.name
                 };
                 repo.add(chan);
 
@@ -229,7 +227,6 @@ namespace Server.Sock.Handlers
 
             Core.Channel chan = args.Caller.Channel;
             chan.Name = newName ?? chan.Name;
-            chan.Name = newTitle ?? chan.Title;
 
             //TODO: updating channel
 
