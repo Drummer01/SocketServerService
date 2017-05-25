@@ -27,6 +27,13 @@ namespace Server.Sock.Handlers
                 saveAtachments(messageId, atachments.ToObject<string[]>());
             }
 
+            channel.LastMessage = new Core.Channel.Message()
+            {
+                Text    = message,
+                Sender  = args.Caller.Id,
+                Time    = Util.UnixTimestamp()
+            };
+
             Response res = new Response();
             dynamic msgData = new ExpandoObject();
 

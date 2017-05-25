@@ -11,6 +11,9 @@ namespace Server.Sock.Core
     public class Channel : ISendable
     {
         [DataMember]
+        public Message LastMessage;
+
+        [DataMember]
         public bool HasPassword;
 
         [DataMember]
@@ -109,6 +112,17 @@ namespace Server.Sock.Core
                 if (users.Contains(item)) continue;
                 item.send(response);
             }
+        }
+
+        [DataContract]
+        public class Message
+        {
+            [DataMember]
+            public int Sender;
+            [DataMember]
+            public int Time;
+            [DataMember]
+            public string Text;
         }
     }
 }
