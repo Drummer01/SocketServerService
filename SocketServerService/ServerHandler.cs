@@ -86,6 +86,12 @@ namespace SocketServerService
             sender.Notify(string.Format("Exceptions saved succesfully. Log path: {0}", path));
         }
 
+        internal static void onRequestServerState(IObervable sender)
+        {
+            int state = chat == null ? 0 : 1;
+            sender.Notify(state);
+        }
+
         private static object GetIP()
         {
             string strIp = string.Empty;

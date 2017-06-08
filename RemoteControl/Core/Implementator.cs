@@ -39,5 +39,6 @@ namespace RemoteControl.Core
         public event EventHandler onInfo;
         public event EventHandler onChannelsReload;
         public event EventHandler onSaveExceptions;
+        public event EventHandler onRequestServerState;
     }
 }
