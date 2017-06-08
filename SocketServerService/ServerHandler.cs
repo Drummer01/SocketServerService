@@ -83,6 +83,7 @@ namespace SocketServerService
         internal static void onSaveExceptions(IObervable sender)
         {
             string path = ExceptionsLogs.SaveToFile();
+            ExceptionsLogs.Clear();
             sender.Notify(string.Format("Exceptions saved succesfully. Log path: {0}", path));
         }
 

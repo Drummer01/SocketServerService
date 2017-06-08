@@ -39,5 +39,10 @@ namespace SocketServer.Helpers
             internal Exception Exception { get; set; }
             internal DateTime Time = DateTime.Now;
         }
+
+        public static void Clear()
+        {
+            exceptions.Clear();
+        }
     }
 }
