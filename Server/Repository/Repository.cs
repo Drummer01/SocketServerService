@@ -32,6 +32,11 @@ namespace Server.Sock.Repository
             }
         }
 
+        public virtual void clear()
+        {
+            this.storage.Clear();
+        }
+
         public IList<T> all()
         {
             lock (storage)

@@ -55,6 +55,7 @@ namespace Server.Sock
         {
             try
             {
+                this.chanelRepo.clear();
                 foreach (DataAccess.channels row in DataAccess.channels.getAll())
                 {
                     var channel = new Core.Channel()
