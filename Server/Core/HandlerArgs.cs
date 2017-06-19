@@ -9,9 +9,9 @@ namespace Server.Sock.Core
 {
     public class HandlerArgs
     {
-        public User Caller;
+        public User Caller { get; set; }
 
-        public Request Request;
+        public Request Request { get; set; }
 
         public object this[int index, bool optional = false]
         {
