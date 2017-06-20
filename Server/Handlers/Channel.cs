@@ -39,6 +39,8 @@ namespace Server.Sock.Handlers
             Core.Channel channel = repo.GetChannelById(id);
             if (channel == null) return false;
 
+            if (channel.MaxUsers >= 100) return false;
+
             if(DataAccess.channel_bans.isBanned(args.Caller.Id, channel.Id))
             {
                 throw new Exception("banned from channel");
