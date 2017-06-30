@@ -44,9 +44,9 @@ namespace Server.Sock.Handlers
             res.action = args.Request.Action + Response.ACTION_DONE;
             res.RequiredModules = new Type[] { typeof(Filter) };
 
-            channel.send(res);
+            //channel.send(res);
 
-            //channel.sendExceptOf(res, new User[] { args.Caller });
+            channel.sendExceptOf(res, new User[] { args.Caller });
 
             return true;
         }

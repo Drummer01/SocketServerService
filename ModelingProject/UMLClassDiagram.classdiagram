@@ -110,12 +110,50 @@
           </operation>
           <operation Id="509fe510-5137-49a4-976e-6a6865067a08" name="OnOpen" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="f6450b84-73d5-49d4-8a06-808c8ce735c2" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6969838b-e089-4bdb-8816-27a964acd365" name="conn" direction="In">
+                  <elementDefinition Id="89e06400-c147-49ce-ace7-89e10edca18a" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="0ab52f90-81d5-45c2-a4bf-f5e3320c9536" LastKnownName="IWebSocketConnection" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="6552c3d5-0640-401c-aae8-d85924f4ff72" name="OnClose" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="9ecf694e-1d31-493e-8064-267a539e545d" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3f2274e4-4c80-4295-b436-d799fa449939" name="conn" direction="In">
+                  <elementDefinition Id="71f5ada3-45ac-401e-8f90-f8c5200ed1bf" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="0ab52f90-81d5-45c2-a4bf-f5e3320c9536" LastKnownName="IWebSocketConnection" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="4051248b-9428-4c91-85b4-5749b7afe177" name="OnMessage" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="8bc2f306-1a98-4daf-97a8-40495594a555" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7031a0c9-a30d-48cb-9788-bf0a3d07644f" name="conn" direction="In">
+                  <elementDefinition Id="38e565bc-d154-49e7-a189-20422151c0ae" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="0ab52f90-81d5-45c2-a4bf-f5e3320c9536" LastKnownName="IWebSocketConnection" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="62c21406-b811-4e4d-8dd0-bab1a8ea7cbb" name="message" direction="In">
+                  <elementDefinition Id="a64003bf-645b-4495-a32e-4c3e6185e9d4" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="05ebe8d3-cdb9-4325-a0ed-0be37b0981a3" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -621,6 +659,14 @@
                   <elementDefinition Id="a9680b03-d3b4-4e07-a949-c22c97910d0f" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="ef4bbb13-fc9d-4619-9264-3f5d570c8a07" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="905a0fb9-1f8c-421d-be88-44a28fe98b2a" name="args" direction="In" isUnique="false">
+                  <elementDefinition Id="f61d2ddb-3b15-4a22-a2bc-22b6f0a3dbc6" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="99842414-2186-4341-95c1-beeee9e22c2a" LastKnownName="HandlerArgs" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>

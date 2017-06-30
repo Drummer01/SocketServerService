@@ -39,7 +39,7 @@ namespace Server.Sock.Handlers
             Core.Channel channel = repo.GetChannelById(id);
             if (channel == null) return false;
 
-            if (channel.MaxUsers >= 100) return false;
+            if (channel.UsersCount >= 100) throw new Exception("too many clients");
 
             if(DataAccess.channel_bans.isBanned(args.Caller.Id, channel.Id))
             {
