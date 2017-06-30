@@ -98,8 +98,8 @@ namespace SocketServer
                 Debug.WriteLine(e.Message);
                 ExceptionsLogs.Add(e);
                 Response response = new Response();
-                response.action = request.Action;
-                response.exception = e;
+                response.action = request.Action + Response.ACTION_DONE;
+                response.exception = ServerException.Listener.handleException(e);
                 string json = JsonConvert.SerializeObject(response);
                 from.Send(json);
             }
