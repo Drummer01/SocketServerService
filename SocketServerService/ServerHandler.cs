@@ -22,6 +22,9 @@ namespace SocketServerService
                 sender?.Notify("Server already started");
                 return;
             }
+
+            ServerException.Listener.registerHandler(new ServerHandling.ExceptionHandlers.MainHandler());
+
             chat = Chat.getInstance();
             chat.LoadChannels();
 
@@ -29,7 +32,9 @@ namespace SocketServerService
 
             listener
                 .registerHandler(new ServerHandling.RequestHandlers.Channel())
-                .registerHandler(new ServerHandling.RequestHandlers.Message());
+                .registerHandler(new ServerHandling.RequestHandlers.Message())
+                .registerHandler(new ServerHandling.RequestHandlers.Test());
+
 
             runningIp = $"ws://{GetIP()}:2000";
             server = new WebSocketServer(runningIp);
@@ -55,6 +60,7 @@ namespace SocketServerService
             chat = null;
             listener.Clear();
             listener = null;
+            ServerException.Listener.Clear();
             server.Dispose();
             sender.Notify("Server stopped");
         }

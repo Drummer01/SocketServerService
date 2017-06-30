@@ -51,8 +51,7 @@ namespace SocketServer.Core
                 if(e.InnerException is Exception)
                 {
                     Debug.WriteLine(e.InnerException);
-                    //response.exception = ServerException.createFrom(e.InnerException);
-                    response.exception = e.InnerException;
+                    response.exception = ServerException.Listener.handleException(e.InnerException);
                     diag.IncrementTotalMissRequests();
                 }
                 else
@@ -62,6 +61,7 @@ namespace SocketServer.Core
             }
             catch (Exception e)
             {
+                ServerException.Listener.handleException(e);
                 ExceptionsLogs.Add(e);
                 response.exception = e;
                 diag.IncrementTotalMissRequests();

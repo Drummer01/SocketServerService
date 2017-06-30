@@ -49,13 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionHandlers\MainHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestHandlers\Channel.cs" />
     <Compile Include="RequestHandlers\Message.cs" />
+    <Compile Include="RequestHandlers\Test.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ExceptionHandlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{263d3ced-10ec-4180-bef4-fa1d979ed34d}</Project>
