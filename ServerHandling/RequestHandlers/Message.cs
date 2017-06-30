@@ -1,12 +1,14 @@
-﻿using Server.Sock.Core;
-using Server.Sock.Ws;
+﻿using SocketServer.Core;
+using SocketServer.Ws;
 using SocketServer.Attributes;
+using SocketServer.Handlers;
 using SocketServer.Helpers;
 using SocketServer.Modules;
 using System;
 using System.Dynamic;
+using SocketServerw.Core;
 
-namespace Server.Sock.Handlers
+namespace ServerHandling.RequestHandlers
 {
     public class Message : Handler
     {
@@ -15,7 +17,7 @@ namespace Server.Sock.Handlers
         {
             string message = (string) args[0];
             string type = (string)args[1];
-            Core.Channel channel = args.Caller.Channel;
+            SocketServer.Core.Channel channel = args.Caller.Channel;
 
             Newtonsoft.Json.Linq.JArray atachments = (Newtonsoft.Json.Linq.JArray)args[2, true];
 
@@ -25,7 +27,7 @@ namespace Server.Sock.Handlers
                 saveAtachments(messageId, atachments.ToObject<string[]>());
             }
 
-            channel.LastMessage = new Core.Channel.Message()
+            channel.LastMessage = new SocketServer.Core.Channel.Message()
             {
                 Text    = message,
                 Sender  = args.Caller.Id,
@@ -43,8 +45,6 @@ namespace Server.Sock.Handlers
             res.data = msgData;
             res.action = args.Request.Action + Response.ACTION_DONE;
             res.RequiredModules = new Type[] { typeof(Filter) };
-
-            //channel.send(res);
 
             channel.sendExceptOf(res, new User[] { args.Caller });
 

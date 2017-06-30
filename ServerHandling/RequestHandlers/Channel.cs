@@ -1,11 +1,13 @@
-﻿using Server.Sock.Core;
-using Server.Sock.Repository;
-using Server.Sock.Ws;
+﻿using SocketServer.Core;
+using SocketServer.Repository;
+using SocketServer.Ws;
 using SocketServer.Attributes;
+using SocketServer.Handlers;
 using System;
 using System.Diagnostics;
+using SocketServerw.Core;
 
-namespace Server.Sock.Handlers
+namespace ServerHandling.RequestHandlers
 {
     public class Channel : Handler
     {
@@ -37,7 +39,7 @@ namespace Server.Sock.Handlers
         {
             int id = args.get<int>(0);
             ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
-            Core.Channel channel = repo.GetChannelById(id);
+            SocketServer.Core.Channel channel = repo.GetChannelById(id);
             if (channel == null) return false;
 
             if (channel.UsersCount >= 100) throw new Exception("too many clients");
@@ -145,7 +147,7 @@ namespace Server.Sock.Handlers
             int id = args.get<int>(0);
 
             ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
-            repo.add(Core.Channel.Create(id));
+            repo.add(SocketServer.Core.Channel.Create(id));
 
             return true;
         }
@@ -155,7 +157,7 @@ namespace Server.Sock.Handlers
         {
             int id = args.get<int>(0);
             ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
-            Core.Channel chan = repo.GetChannelById(id);
+            SocketServer.Core.Channel chan = repo.GetChannelById(id);
 
             Debug.WriteLine(chan);
             Response response = new Response()
@@ -178,14 +180,14 @@ namespace Server.Sock.Handlers
         {
             int id = args.get<int>(0);
             ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
-            Core.Channel chan = repo.GetChannelById(id);
+            SocketServer.Core.Channel chan = repo.GetChannelById(id);
 
             chan.Update();
 
             Response res = new Response()
             {
-                action  = Response.ACTION_CHANNEL_DATA_UPDATE,
-                data    = chan
+                action = Response.ACTION_CHANNEL_DATA_UPDATE,
+                data = chan
             };
 
             chan.send(res);
