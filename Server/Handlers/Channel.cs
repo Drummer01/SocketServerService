@@ -3,6 +3,7 @@ using Server.Sock.Repository;
 using Server.Sock.Ws;
 using SocketServer.Attributes;
 using System;
+using System.Diagnostics;
 
 namespace Server.Sock.Handlers
 {
@@ -24,7 +25,7 @@ namespace Server.Sock.Handlers
         {
             Response res = new Response()
             {
-                action = action + Response.ACTION_DONE,
+                action = action,
                 data = data
             };
             ISendable users = Register.getInstance().get("users") as ISendable;
@@ -146,7 +147,6 @@ namespace Server.Sock.Handlers
             ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
             repo.add(Core.Channel.Create(id));
 
-            notifyClients(Response.ACTION_CHANNEL_UPDATE + Response.ACTION_DONE, repo.all());
             return true;
         }
 
@@ -157,8 +157,9 @@ namespace Server.Sock.Handlers
             ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
             Core.Channel chan = repo.GetChannelById(id);
 
-            bool success = DataAccess.channels.remove(id);
-            if(success)
+            Debug.WriteLine(chan);
+
+            if(chan != null)
             {
                 Response response = new Response()
                 {
@@ -168,13 +169,11 @@ namespace Server.Sock.Handlers
                         reason = "removing channel"
                     }
                 };
-
                 chan.kickAll(response);
                 repo.remove(chan);
-
-                notifyClients(Response.ACTION_CHANNEL_UPDATE + Response.ACTION_DONE, repo.all());
+                return true;
             }
-            return success;
+            throw new ArgumentException();
         }
 
         [RequiredChannelPermissions(DataAccess.ChannelPermissionsLevel.Administrator, HandlerArgs.ArgumentNum.Zero)]
