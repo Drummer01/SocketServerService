@@ -123,5 +123,36 @@ namespace Server.Sock.Core
             [DataMember]
             public string Text;
         }
+
+        public static Channel Create(int id)
+        {
+            using (DataAccess.DataModel dm = new DataAccess.DataModel())
+            {
+                return Create(dm.channels.Where(c => c.id == id).FirstOrDefault());
+            }
+        }
+
+        public static Channel Create(DataAccess.channels data)
+        {
+            DataAccess.messages lastMessageData = null;
+            using (DataAccess.DataModel dm = new DataAccess.DataModel())
+            {
+                lastMessageData = dm.messages.Where(m => m.cid == data.id).OrderByDescending( m => m.time).FirstOrDefault();
+            }
+            return new Channel()
+            {
+                Id = data.id,
+                HasPassword = data.is_locked,
+                MaxUsers = 100,
+                Name = data.name,
+                LastMessage = new Channel.Message()
+                {
+                    Sender  = lastMessageData.cid,
+                    Time    = lastMessageData.time,
+                    Text    = lastMessageData.message    
+                }
+           
+            };
+        }
     }
 }

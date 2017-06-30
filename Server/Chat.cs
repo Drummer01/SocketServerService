@@ -52,14 +52,7 @@ namespace Server.Sock
                 this.chanelRepo.clear();
                 foreach (DataAccess.channels row in DataAccess.channels.getAll())
                 {
-                    var channel = new Core.Channel()
-                    {
-                        Id = row.id,
-                        HasPassword = row.is_locked,
-                        MaxUsers = 100,
-                        Name = row.name
-                    };
-                    this.chanelRepo.add(channel);
+                    this.chanelRepo.add(Channel.Create(row));
                 }
             }
             catch (Exception e)
