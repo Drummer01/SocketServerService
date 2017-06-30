@@ -1,11 +1,11 @@
-﻿using Server.Sock.Handlers;
-using Server.Sock.Ws;
+﻿using SocketServer.Ws;
+using SocketServer.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Server.Sock.Core
+namespace SocketServer.Core
 {
     public class Listener
     {

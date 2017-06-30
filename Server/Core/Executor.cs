@@ -1,12 +1,13 @@
-﻿using Server.Sock.Handlers;
-using Server.Sock.Ws;
+﻿using SocketServer.Handlers;
+using SocketServer.Ws;
 using SocketServer.Attributes;
 using SocketServer.Helpers;
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using SocketServerw.Core;
 
-namespace Server.Sock.Core
+namespace SocketServer.Core
 {
     class Executor
     {

@@ -1,7 +1,8 @@
-﻿using Server.Sock.Ws;
+﻿using SocketServer.Core;
+using SocketServer.Ws;
 using System;
 
-namespace Server.Sock.Core
+namespace SocketServerw.Core
 {
     public class HandlerArgs
     {

@@ -1,4 +1,4 @@
-﻿namespace Server.Sock.Handlers
+﻿namespace SocketServer.Handlers
 {
     public abstract class Handler
     {

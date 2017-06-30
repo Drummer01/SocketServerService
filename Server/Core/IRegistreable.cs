@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Sock.Core
+namespace SocketServer.Core
 {
-    interface IRegistreable
+    public interface IRegistreable
     {
         object getKey();
         void setKey(object key);

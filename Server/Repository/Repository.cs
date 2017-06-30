@@ -1,9 +1,9 @@
-﻿using Server.Sock.Core;
+﻿using SocketServer.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace Server.Sock.Repository
+namespace SocketServer.Repository
 {
     public abstract class Repository<T> : IRegistreable, IEnumerable<T> where T : ISendable
     {

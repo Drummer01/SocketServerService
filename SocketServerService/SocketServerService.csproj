@@ -95,6 +95,10 @@
       <Project>{3555ef91-7e7e-4598-aae5-7c2cd5f5f758}</Project>
       <Name>RemoteControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ServerHandling\ServerHandling.csproj">
+      <Project>{78dac77b-f011-4fb6-b6bb-4ed07195a383}</Project>
+      <Name>ServerHandling</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Server\Server.csproj">
       <Project>{9c5d6e6c-c445-4d8f-b31d-79f6bbb5d56c}</Project>
       <Name>Server</Name>

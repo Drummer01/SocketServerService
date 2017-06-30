@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Server.Sock.Ws
+namespace SocketServer.Ws
 {
     public class Response
     {

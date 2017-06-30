@@ -1,9 +1,9 @@
-﻿using Server.Sock.Core;
+﻿using SocketServer.Core;
 using Fleck;
 using System.Linq;
-using Server.Sock.Ws;
+using SocketServer.Ws;
 
-namespace Server.Sock.Repository
+namespace SocketServer.Repository
 {
     public class UserRepository : Repository<User>, ISendable
     {

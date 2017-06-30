@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Server.Sock.Ws;
+using SocketServer.Ws;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 
 namespace SocketServer.Modules
 {
-    class Filter : Module
+    public class Filter : Module
     {
         public static Filter create(int id)
         {

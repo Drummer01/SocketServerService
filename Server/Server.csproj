@@ -7,7 +7,7 @@
     <ProjectGuid>{9C5D6E6C-C445-4D8F-B31D-79F6BBB5D56C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Server</RootNamespace>
+    <RootNamespace>SocketServer</RootNamespace>
     <AssemblyName>Server</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -66,10 +66,7 @@
     <Compile Include="Core\Register.cs" />
     <Compile Include="Core\ServerException.cs" />
     <Compile Include="Core\User.cs" />
-    <Compile Include="Handlers\Channel.cs" />
     <Compile Include="Handlers\Handler.cs" />
-    <Compile Include="Handlers\Message.cs" />
-    <Compile Include="Handlers\Test.cs" />
     <Compile Include="Helpers\ExceptionsLogs.cs" />
     <Compile Include="Helpers\ServerDiagnostics.cs" />
     <Compile Include="Helpers\Util.cs" />

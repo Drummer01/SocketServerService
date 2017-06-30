@@ -2,7 +2,7 @@
 using System;
 
 
-namespace Server.Sock.Repository
+namespace SocketServer.Repository
 {
     class ModuleRepository : Repository<Module>
     {

@@ -1,7 +1,7 @@
-﻿using Server.Sock.Core;
+﻿using SocketServer.Core;
 using System.Linq;
 
-namespace Server.Sock.Repository
+namespace SocketServer.Repository
 {
     public class ChannelRepository : Repository<Channel>
     {

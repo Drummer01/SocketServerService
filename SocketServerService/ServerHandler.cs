@@ -1,8 +1,7 @@
 ﻿using RemoteControl.Core;
-using Server.Sock;
-using Server.Sock.Core;
+using SocketServer;
+using SocketServer.Core;
 using Fleck;
-using Server.Sock.Handlers;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
 using SocketServer.Helpers;
@@ -29,8 +28,8 @@ namespace SocketServerService
             listener = Listener.getInstance();
 
             listener
-                .registerHandler(new Server.Sock.Handlers.Channel())
-                .registerHandler(new Message());
+                .registerHandler(new ServerHandling.RequestHandlers.Channel())
+                .registerHandler(new ServerHandling.RequestHandlers.Message());
 
             runningIp = $"ws://{GetIP()}:2000";
             server = new WebSocketServer(runningIp);

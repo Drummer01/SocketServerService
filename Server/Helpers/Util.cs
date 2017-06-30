@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SocketServer.Helpers
 {
-    internal static class Util
+    public static class Util
     {
         public static int UnixTimestamp()
         {

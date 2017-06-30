@@ -1,10 +1,10 @@
-﻿using Server.Sock.Core;
-using Server.Sock.Ws;
+﻿using SocketServer.Core;
+using SocketServer.Ws;
 using System;
 
 namespace SocketServer.Modules
 {
-    abstract class Module : ISendable
+    public abstract class Module : ISendable
     {
         public int ID { get; set; }
 

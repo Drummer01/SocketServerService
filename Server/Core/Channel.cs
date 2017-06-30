@@ -1,12 +1,12 @@
-﻿using Server.Sock.Repository;
-using Server.Sock.Ws;
+﻿using SocketServer.Repository;
+using SocketServer.Ws;
 using System.Runtime.Serialization;
 using System.Linq;
 using System.Threading;
 using DataAccess;
 using System;
 
-namespace Server.Sock.Core
+namespace SocketServer.Core
 {
     [DataContract]
     public class Channel : ISendable, IDataUpdateable

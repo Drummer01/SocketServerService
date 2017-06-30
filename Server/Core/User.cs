@@ -1,10 +1,10 @@
 ﻿using Fleck;
-using Server.Sock.Repository;
-using Server.Sock.Ws;
+using SocketServer.Repository;
+using SocketServer.Ws;
 using SocketServer.Modules;
 using System.Runtime.Serialization;
 
-namespace Server.Sock.Core
+namespace SocketServer.Core
 {
     [DataContract]
     public class User : ISendable

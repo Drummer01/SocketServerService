@@ -1,13 +1,13 @@
 ﻿using Fleck;
 using Newtonsoft.Json;
-using Server.Sock.Core;
-using Server.Sock.Repository;
-using Server.Sock.Ws;
+using SocketServer.Core;
+using SocketServer.Repository;
+using SocketServer.Ws;
 using SocketServer.Helpers;
 using System;
 using System.Diagnostics;
 
-namespace Server.Sock
+namespace SocketServer
 {
     public class Chat
     {

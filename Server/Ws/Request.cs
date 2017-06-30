@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Server.Sock.Ws
+namespace SocketServer.Ws
 {
     public class Request
     {

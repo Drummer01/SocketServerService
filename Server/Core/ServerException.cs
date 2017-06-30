@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Sock.Core
+namespace SocketServer.Core
 {
     [DataContract]
     public class ServerException : Exception
