@@ -171,28 +171,6 @@ namespace Server.Sock.Handlers
             return true;
         }
 
-        [RequiredChannelPermissions(DataAccess.ChannelPermissionsLevel.Administrator, HandlerArgs.ArgumentNum.Zero)]
-        public bool restore(HandlerArgs args)
-        {
-            int id = args.get<int>(0);
-            bool success = DataAccess.channels.restore(id);
-            if (success)
-            {
-                ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
-                var row = DataAccess.channels.get(id);
-                var chan = new Core.Channel()
-                {
-                    Id = row.id,
-                    HasPassword = row.is_locked,
-                    MaxUsers = row.max_users,
-                    Name = row.name
-                };
-                repo.add(chan);
-
-                notifyClients(Response.ACTION_CHANNEL_UPDATE + Response.ACTION_DONE, repo.all());
-            }
-            return success;
-        }
 
         [RequiredChannel]
         [RequiredChannelPermissions(DataAccess.ChannelPermissionsLevel.Administrator)]
