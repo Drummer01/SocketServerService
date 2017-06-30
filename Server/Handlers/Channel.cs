@@ -42,12 +42,12 @@ namespace Server.Sock.Handlers
 
             if (channel.UsersCount >= 100) throw new Exception("too many clients");
 
-            if(DataAccess.channel_bans.isBanned(args.Caller.Id, channel.Id))
+            if (DataAccess.channel_bans.isBanned(args.Caller.Id, channel.Id))
             {
                 throw new Exception("banned from channel");
             }
-            
-            if(channel.HasPassword)
+
+            if (channel.HasPassword)
             {
 
                 //using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
@@ -158,22 +158,17 @@ namespace Server.Sock.Handlers
             Core.Channel chan = repo.GetChannelById(id);
 
             Debug.WriteLine(chan);
-
-            if(chan != null)
+            Response response = new Response()
             {
-                Response response = new Response()
+                action = Response.ACTION_CHANNEL_DISCONNECT + Response.ACTION_DONE,
+                data = new
                 {
-                    action = Response.ACTION_CHANNEL_DISCONNECT + Response.ACTION_DONE,
-                    data = new
-                    {
-                        reason = "removing channel"
-                    }
-                };
-                chan.kickAll(response);
-                repo.remove(chan);
-                return true;
-            }
-            throw new ArgumentException();
+                    reason = "removing channel"
+                }
+            };
+            chan.kickAll(response);
+            repo.remove(chan);
+            return true;
         }
 
         [RequiredChannelPermissions(DataAccess.ChannelPermissionsLevel.Administrator, HandlerArgs.ArgumentNum.Zero)]
@@ -181,7 +176,7 @@ namespace Server.Sock.Handlers
         {
             int id = args.get<int>(0);
             bool success = DataAccess.channels.restore(id);
-            if(success)
+            if (success)
             {
                 ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
                 var row = DataAccess.channels.get(id);
