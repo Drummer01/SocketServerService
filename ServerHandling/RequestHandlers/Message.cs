@@ -10,7 +10,7 @@ using SocketServerw.Core;
 
 namespace ServerHandling.RequestHandlers
 {
-    public class Message : Handler
+    public class Message : RequestHandler
     {
         [RequiredChannel]
         public object send(HandlerArgs args)

@@ -9,7 +9,7 @@ using SocketServerw.Core;
 
 namespace ServerHandling.RequestHandlers
 {
-    public class Channel : Handler
+    public class Channel : RequestHandler
     {
         private static string md5Builder(System.Security.Cryptography.MD5 md5, string str)
         {

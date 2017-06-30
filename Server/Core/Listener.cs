@@ -25,16 +25,16 @@ namespace SocketServer.Core
             }
         }
 
-        private Dictionary<string, Handler> map;
+        private Dictionary<string, RequestHandler> map;
 
         private Listener()
         {
-            map = new Dictionary<string, Handler>();
+            map = new Dictionary<string, RequestHandler>();
         }
 
         public void invoke(User caller, Request request)
         {
-            Handler handler = getHandler(request.Handler);
+            RequestHandler handler = getHandler(request.Handler);
 
             if( handler == null || !handler.MethodExists(request.Method) )
             {
@@ -47,14 +47,14 @@ namespace SocketServer.Core
             Task.Factory.StartNew(exec.run);
         }
 
-        public Listener registerHandler(Handler handler)
+        public Listener registerHandler(RequestHandler handler)
         {
             map.Add(handler.Name.ToLower(), handler);
             GC.SuppressFinalize(handler);
             return this;
         }
 
-        private Handler getHandler(string handlerName)
+        private RequestHandler getHandler(string handlerName)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace SocketServer.Core
 
         public void Clear()
         {
-            foreach(Handler handler in this.map.Values)
+            foreach(RequestHandler handler in this.map.Values)
             {
                 GC.ReRegisterForFinalize(handler);
             }

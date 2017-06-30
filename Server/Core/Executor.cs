@@ -13,13 +13,13 @@ namespace SocketServer.Core
     {
         private User user;
 
-        private Handler handler;
+        private RequestHandler handler;
 
         private MethodInfo method;
 
         private Request request;
 
-        public Executor(User user, Handler handler, MethodInfo method, Request request)
+        public Executor(User user, RequestHandler handler, MethodInfo method, Request request)
         {
             this.user = user;
             this.handler = handler;

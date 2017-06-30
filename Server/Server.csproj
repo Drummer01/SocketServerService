@@ -66,7 +66,7 @@
     <Compile Include="Core\Register.cs" />
     <Compile Include="Core\ServerException.cs" />
     <Compile Include="Core\User.cs" />
-    <Compile Include="Handlers\Handler.cs" />
+    <Compile Include="Handlers\RequestHandler.cs" />
     <Compile Include="Helpers\ExceptionsLogs.cs" />
     <Compile Include="Helpers\ServerDiagnostics.cs" />
     <Compile Include="Helpers\Util.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace SocketServer.Handlers
 {
-    public abstract class Handler
+    public abstract class RequestHandler
     {
         public string Name
         {
