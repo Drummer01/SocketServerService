@@ -67,6 +67,7 @@
     <Compile Include="filters.cs" />
     <Compile Include="filter_mapping.cs" />
     <Compile Include="filter_subscribers.cs" />
+    <Compile Include="IDataUpdateable.cs" />
     <Compile Include="messages.cs" />
     <Compile Include="message_atachments.cs" />
     <Compile Include="participants.cs" />

@@ -176,18 +176,19 @@ namespace Server.Sock.Handlers
         [RequiredChannelPermissions(DataAccess.ChannelPermissionsLevel.Administrator)]
         public bool update(HandlerArgs args)
         {
-            string newName = args.get<string>(0, true);
-            string newTitle = args.get<string>(1, true);
-            string newPassword = args.get<string>(2, true);
-            bool hasPassword = (newPassword != null);
+            int id = args.get<int>(0);
+            ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
+            Core.Channel chan = repo.GetChannelById(id);
 
-            var rawChan = DataAccess.channels.get(args.Caller.Channel.Id);
+            chan.Update();
 
-            Core.Channel chan = args.Caller.Channel;
-            chan.Name = newName ?? chan.Name;
+            Response res = new Response()
+            {
+                action  = Response.ACTION_CHANNEL_DATA_UPDATE,
+                data    = chan
+            };
 
-            //TODO: updating channel
-
+            chan.send(res);
             return true;
         }
     }

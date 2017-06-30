@@ -6,7 +6,7 @@ namespace Server.Sock.Ws
     public class Response
     {
         #region Public constants
-        public const string ACTION_CHANNEL_UPDATE = "channel.update";
+        public const string ACTION_CHANNEL_DATA_UPDATE = "channel.updatedata";
         public const string ACTION_CHANNEL_DISCONNECT = "channel.disconnect";
         public const string ACTION_DONE = "+done";
         #endregion

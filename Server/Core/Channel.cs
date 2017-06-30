@@ -3,11 +3,13 @@ using Server.Sock.Ws;
 using System.Runtime.Serialization;
 using System.Linq;
 using System.Threading;
+using DataAccess;
+using System;
 
 namespace Server.Sock.Core
 {
     [DataContract]
-    public class Channel : ISendable
+    public class Channel : ISendable, IDataUpdateable
     {
         [DataMember]
         public Message LastMessage;
@@ -122,6 +124,17 @@ namespace Server.Sock.Core
             public int Time;
             [DataMember]
             public string Text;
+        }
+
+        public void Update()
+        {
+            using (DataModel dm = new DataModel())
+            {
+                channels data = dm.channels.Where(c => c.id == this.Id).First();
+
+                Name        = data.name;
+                HasPassword = data.is_locked;
+            }
         }
 
         public static Channel Create(int id)
