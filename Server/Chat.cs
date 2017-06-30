@@ -6,6 +6,7 @@ using SocketServer.Ws;
 using SocketServer.Helpers;
 using System;
 using System.Diagnostics;
+using Newtonsoft.Json.Serialization;
 
 namespace SocketServer
 {
@@ -32,6 +33,14 @@ namespace SocketServer
         public UserRepository usersRepo { get; set; }
 
         public ChannelRepository chanelRepo { get; set; }
+
+        public static JsonSerializerSettings SerializationSettings { get; private set; } = new JsonSerializerSettings()
+        {
+            ContractResolver = new DefaultContractResolver()
+            {
+                IgnoreSerializableInterface = true
+            }
+        };
 
         private Chat()
         {
@@ -77,6 +86,8 @@ namespace SocketServer
         public void OnMessage(IWebSocketConnection from, string message)
         {
             Debug.WriteLine(message);
+
+            
             User user = this.usersRepo.GetUserByConnection(from);
             Request request = JsonConvert.DeserializeObject<Request>(message);
             Listener listener = Listener.getInstance();
@@ -100,7 +111,7 @@ namespace SocketServer
                 Response response = new Response();
                 response.action = request.Action + Response.ACTION_DONE;
                 response.exception = ServerException.Listener.handleException(e);
-                string json = JsonConvert.SerializeObject(response);
+                string json = JsonConvert.SerializeObject(response, Chat.SerializationSettings);
                 from.Send(json);
             }
         }
