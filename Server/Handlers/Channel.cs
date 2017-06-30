@@ -141,23 +141,10 @@ namespace Server.Sock.Handlers
 
         public bool create(HandlerArgs args)
         {
-            string name = args.get<string>(0);
-            string title = args.get<string>(1, true);
-            string password = args.get<string>(2, true);
-
-            int created_chann_id = DataAccess.channels.createNew(args.Caller.Id, name, title, password);
-
-            if (created_chann_id.Equals(-1)) return false;
+            int id = args.get<int>(0);
 
             ChannelRepository repo = Register.getInstance().get("channels") as ChannelRepository;
-            Core.Channel chan = new Core.Channel()
-            {
-                Id = created_chann_id,
-                HasPassword = (password != null),
-                MaxUsers = 100,
-                Name = name
-            };
-            repo.add(chan);
+            repo.add(Core.Channel.Create(id));
 
             notifyClients(Response.ACTION_CHANNEL_UPDATE + Response.ACTION_DONE, repo.all());
             return true;
