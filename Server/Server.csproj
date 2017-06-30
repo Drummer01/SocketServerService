@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\HandledExceptionNamespaceAttribute.cs" />
+    <Compile Include="Attributes\HandledExceptionTypeAttribute.cs" />
     <Compile Include="Attributes\RequiredChannel.cs" />
     <Compile Include="Attributes\RequiredChannelPermissions.cs" />
     <Compile Include="Chat.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Core\Register.cs" />
     <Compile Include="Core\ServerException.cs" />
     <Compile Include="Core\User.cs" />
+    <Compile Include="Handlers\ExceptionHandler.cs" />
     <Compile Include="Handlers\RequestHandler.cs" />
     <Compile Include="Helpers\ExceptionsLogs.cs" />
     <Compile Include="Helpers\ServerDiagnostics.cs" />

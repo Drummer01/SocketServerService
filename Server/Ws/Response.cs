@@ -11,7 +11,7 @@ namespace SocketServer.Ws
         public const string ACTION_DONE = "+done";
         #endregion
 
-        public object exception { set; get; }
+        public Exception exception { set; get; }
 
         public dynamic data { set; get; }
 
