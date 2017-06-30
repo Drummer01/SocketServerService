@@ -7,7 +7,7 @@ namespace Server.Sock.Repository
     {
         public Channel GetChannelById(int id)
         {
-            return storage.Where(item => item.Id.Equals(id)).FirstOrDefault();
+            return storage.First(item => item.Id.Equals(id));
         }
     }
 }
